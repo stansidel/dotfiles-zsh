@@ -1,0 +1,11 @@
+# Kills the process running on the provided port
+#
+# clear_port 3000
+
+clear_port() {
+  if [ "$1" ]; then
+    kill "$(lsof -t -i4TCP:"$1")"
+    return
+  fi
+  echo >&2 "Port number needed to determine process id"
+}
